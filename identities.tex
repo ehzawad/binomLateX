@@ -1,0 +1,204 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb, mathpazo}
+
+\begin{document}
+\title{{\sc Ten Binomial Identities}}
+\author{Emrul Hasan Zawad}
+\date{Fall 2018}
+\maketitle
+
+
+\section{Factorial Expansion}
+
+\[
+    \binom{n}{k} = \frac{n}{k!(n-k)!}
+\]
+
+\textbf{\textit{Proof:}}
+The symmetric group $S_k$ on k symbols consists of all permutations of these k symbols. For instance, $S_3$ consists of all permutations of 1, 2, 3 which means that the elements of $S_3$ are the triples $(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)$.
+\newline
+\newline
+First choose $k$ elements among the $n$ elements in some order, which can be done in $n.(n-1)\cdots(n-k+1)$ways.
+\newline
+\newline
+In this count, any group of $k$ elements have been counted $k$! times, which you have to compensate for, giving
+
+\[
+    \frac{n.(n-1)\dots(n-k+1)}{k!} = \frac{n!}{k!(n-k)!}
+\]
+
+
+\section{Binomial Theorem}
+
+\textbf{\textit{Proof:}}
+
+Expanding ${(x+y)}^n$ yields the sum of the $2^n$ products of the form $e_1e_2 \ldots e_n$ where each $e_i$ is $x$ or $y$. Rearranging factors shows that each product equals $x^{(n-k)}y^k$ for some $k$ between $0$ and $n$. For a given $k$, the following are proved equal in succession: \\
+
+
+$\bullet$ the number of copies of $x^{(n-k)}y^k$ in the expansion \\
+$\bullet$ the number of $n$-$k$character $x$,$y$ strings having $y$ in exactly $k$ positions \\
+$\bullet$ the number of $k$-element subsets of ${1,2,\ldots,n}$ $\dots$ So $\binom{n}{k}$ by a short combinatorial argument as $\frac{n!}{k!(n-k)!}$
+
+This proves the Binomial Theorem
+\[
+    {(1+x)}^n = \sum_{k=0}^n\binom{n}{k}x^k.
+\]
+
+
+\newpage
+\section{Pascal Identity}
+
+\[
+    \binom{n}{k} + \binom{n}{k - 1} = \binom{n+1}{k}
+\]
+
+\textbf{\textit{Proof:}}
+
+\begin{align*}
+    \binom{n}{k} + \binom{n}{k-1} &= \frac{n!}{k!(n-k)!} + \frac{n!}{(k-1)!(n-k+1)!} \\
+                                  &= \frac{n!}{k(k-1)!(n-k)!} + \frac{n!}{(k-1)!(n-k+1)(n-k)!} \\
+                                  &= \frac{n!(n-k+1)}{k(k-1)!(n-k)!(n-k+1)} + \frac{n!(k)}{(k-1)!(n-k+1)(n-k)!(k)} \\
+                                  &= \frac{n!(n-k+1)}{k!(n-k+1)!} + \frac{n!(k)}{k!(n-k+1)!} \\
+                                  &= \frac{n!(n-k+1) + n!(k)}{k!(n-k+1)!} \\
+                                  &= \frac{n!(n-k+1+k)}{k!(n-k+1)!} \\
+                                  &= \frac{n!(n+1)}{k!(n-k+1)!} \\
+                                  &= \frac{(n+1)!}{k!((n+1)-k)!} \\
+                                  &= \binom{n+1}{k}
+\end{align*}
+
+
+\section{Symmetry Identity}
+
+\[
+    \binom{n}{k} = \binom{n}{n-k}
+\]
+
+\textbf{\textit{Proof:}}
+
+\begin{align*}
+    \binom{n}{k} &= \frac{n!}{k!(n-k)!} \\
+                 &= \frac{n!}{(n-k)!k!} \\
+                 &= \frac{n!}{(n-k)!(n-(n-k))!} \\
+                 &= \binom{n}{n-k}
+\end{align*}
+
+
+\section{Absorption/Extraction Identity}
+
+\[
+    \binom{n}{k} = \frac{n}{k} \binom{n-1}{k-1}
+\]
+
+\textbf{\textit{Proof:}}
+
+\begin{align*}
+    \binom{n}{k} &= \frac{n!}{k!(n-k)!} \\
+                 &= \frac{n(n-1)!}{k(k-1)!(n-k)!} \\
+                 &= \frac{n}{k}\frac{(n-1)!}{(k-1)!(n-1-(k-1))!} \\
+                 &= \frac{n}{k} \binom{n-1}{k-1}
+\end{align*}
+
+
+\section{trinomial revision}
+
+\[
+    \binom{r}{m} \binom{m}{k} = \binom{r}{k} \binom{r-k}{m-k}
+\]
+
+\textbf{\textit{Proof:}}
+
+\begin{align*}
+    \binom{r}{m} \binom{m}{k} &= \frac{r!}{m!(r-m)!} \frac{m!}{k!(m-k)!} \\
+                              &= \frac{r!(r-k)!}{(r-m)!k!(m-k)!(r-k)!} \\
+                              &= \frac{r!}{k!(r-k)!} \frac{(r-k)!}{(m-k)!(r-k-m+k)!} \\
+                              &= \binom{r}{k} \binom{r-k}{m-k}
+\end{align*}
+
+\newpage
+
+\section{Vandermonde's Identity}
+
+\[
+    S(a,b,n) = \sum_{k=0}^n {a \choose k} {b \choose n-k} = {a+b\choose n}
+\]
+
+\textbf{\textit{Proof:}}
+Since ${a\choose k}$ is the coefficient of $x^k$ in the polynomial ${(x+1)}^a$ and ${b\choose n-k}$ is the coefficient of $x^{(n-k)}$ in the polynomial ${(1+x)}^b$, the sum $S(a,b,n)$ of their products collects all the contributions to the coefficient of $x^n$ in the polynomial ${(1+x)}^a{(1+x)}^b={(1+x)}^{a+b}$.
+
+This proves that $S(a,b,n) = {a+b \choose n}$
+
+
+\textbf{\textit{A Counting argument:}}
+If there are a items of type A and b items of type B, then
+\[
+    \sum_{k=0}^{n} {a \choose k} {b \choose n-k}
+\]
+
+is the number of ways to choosing $n$ items from them: choose $k$ of type A and $n - k$ of type B, vary from o to n and add up.
+
+Thus,
+\[
+    {a + b \choose n}
+\]
+
+\section{Hockey-Stick Identity}
+
+\[
+    \sum_{i=0}^n\binom{i+k-1}{k-1}=\binom{n+k}{k}
+\]
+
+\textbf{\textit{Proof by argument:}}
+One way to interpret this identity is to consider the number of ways to choose $k$ integers from the set ${1, 2, 3, \ldots, n + k}$.
+
+There are $\binom{n+k}{k}$ ways to do this, and we can also count the number of possibilities by considering the largest integer chosen. This can vary from $k$ up to $n+k$, and if the largest integer chosen is $l$, then there are $\binom{l-1}{k-1}$ ways to choose the remaining $k-1$ integers
+
+Therefore
+\[
+    \displaystyle\sum_{l=k}^{n+k}\binom{l-1}{k-1}=\binom{n+k}{k}
+\]
+, and letting $i = l - k$ gives
+\[
+    \displaystyle\sum_{i=0}^{n}\binom{i+k-1}{k-1}=\binom{n+k}{k}
+\]
+
+
+\section{Sum of Binomial Coefficients over Upper Index}
+\[
+    \displaystyle \sum_{j \mathop = 0}^n \binom j m = \binom {n + 1} {m + 1}
+\]
+
+\textbf{\textit{Proof:}}
+
+\begin{align*}
+    \displaystyle \sum_{0 \mathop \le j \mathop \le n} \binom j m &= \displaystyle \sum_{0 \mathop \le m + j \mathop \le n} \binom {m + j} m \\
+    &= \displaystyle \sum_{-m \mathop \le j \mathop < 0} \binom {m + j} m + \sum_{0 \mathop \le j \mathop \le n - m} \binom {m + j} m \\
+    &= \displaystyle 0 + \sum_{0 \mathop \le \mathop j \mathop \le n - m} \binom {m + j} m \\
+    &=\displaystyle \binom {m + \left({n - m}\right) + 1} {m + 1} \\
+    &=\displaystyle \binom {n + 1} {m + 1}
+%
+\end{align*}
+
+
+\section{Sum of Binomial Coefficients over Lower Index}
+\[
+    \displaystyle \sum_{i \mathop = 0}^n \binom n i = 2^n
+\]
+
+\textbf{\textit{Proof:}}
+
+From the Binomial Theorem, we have that:
+\[
+    {(x+y)}^n = \sum_{k=0}^{n}\binom{n}{i}x^{(n-i)}y^i
+\]
+
+Putting x = y = 1 we get:
+
+\begin{align*}
+    2^{n} &= {(1+1)}^n \\
+          &= \sum_{i=0}^n\binom{n}{i}1^{(n-1)}1^i \\
+          &= \sum_{i=0}^n\binom{n}{i}
+%
+\end{align*}
+
+
+\end{document}
